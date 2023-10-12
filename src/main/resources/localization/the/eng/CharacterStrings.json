@@ -1,0 +1,10 @@
+
+{
+	"the:TheCharacter":
+	{
+		"NAMES": ["The ___"],
+	 "OPTIONS": [
+		],
+		"TEXT": [ "{#b:Cards created for this character in the #yCustomize menu can appear in normal runs. | Basic and Common cards among them can be used in starting loadouts.}" ]
+	}
+}
