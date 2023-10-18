@@ -19,21 +19,21 @@ public class ThePlayerData extends PCLPlayerData<TheResources, TheConfig, TheCha
 
     public ThePlayerData(TheResources resources)
     {
-        super(resources, 75, 99, 5, 3, 0, true, true);
+        super(resources, 75, 99, 5, 3, 0, true, false);
     }
 
     @Override
-    public String[] getAdditionalCardIDs() {
-        return EUIUtils.arrayMap(PCLCustomCardSlot.getCards(resources.cardColor, AbstractCard.CardColor.COLORLESS),
+    public String[] getAdditionalCardIDs(boolean customEnabled) {
+        return !customEnabled ? EUIUtils.arrayMap(PCLCustomCardSlot.getCards(resources.cardColor, AbstractCard.CardColor.COLORLESS),
                 String.class, slot -> slot.ID
-        );
+        ) : super.getAdditionalCardIDs(customEnabled);
     }
 
     @Override
-    public String[] getAdditionalRelicIDs() {
-        return EUIUtils.arrayMap(PCLCustomRelicSlot.getRelics(resources.cardColor, AbstractCard.CardColor.COLORLESS),
+    public String[] getAdditionalRelicIDs(boolean customEnabled) {
+        return !customEnabled ? EUIUtils.arrayMap(PCLCustomRelicSlot.getRelics(resources.cardColor, AbstractCard.CardColor.COLORLESS),
                 String.class, slot -> slot.ID
-        );
+        ) : super.getAdditionalRelicIDs(customEnabled);
     }
 
     @Override

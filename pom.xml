@@ -81,6 +81,7 @@
                         <configuration>
                             <target>
                                 <copy file="target/The.jar" tofile="D:\Program Files\Steam\steamapps\common\SlayTheSpire\mods\The.jar"/>
+                                <copy file="target/The.jar" tofile="D:\Program Files\Steam\steamapps\common\SlayTheSpire\uploadNothing\content\The.jar"/>
                             </target>
                         </configuration>
                         <goals>

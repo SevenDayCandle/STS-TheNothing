@@ -5,6 +5,6 @@
 		"NAMES": ["The ___"],
 	 "OPTIONS": [
 		],
-		"TEXT": [ "{#b:Cards created for this character in the #yCustomize menu can appear in normal runs. | Basic and Common cards among them can be used in starting loadouts.}" ]
+		"TEXT": [ "{#b:Cards and relics created for this character in the #yCustomize menu appear in normal runs. | Basic/Common/Curse cards and Starter relics can be used in loadouts.}" ]
 	}
 }

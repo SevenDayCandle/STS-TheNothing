@@ -7,10 +7,13 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import extendedui.EUIUtils;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
+import pinacolada.cards.base.TemplateCardData;
 import pinacolada.cards.base.fields.PCLAffinity;
 import pinacolada.cards.pcl.curse.Curse_AscendersBane;
 import pinacolada.dungeon.CombatManager;
 import pinacolada.resources.PCLResources;
+import pinacolada.resources.PGR;
+import pinacolada.resources.loadout.PCLLoadout;
 import thenothing.characters.TheCharacter;
 
 public class TheResources extends PCLResources<ThePlayerData, TheImages, TheTooltips, TheStrings>
@@ -21,6 +24,48 @@ public class TheResources extends PCLResources<ThePlayerData, TheImages, TheTool
     public TheResources()
     {
         super(ID, TheEnum.Cards.THE, TheEnum.Characters.THE, new TheImages(ID), false);
+    }
+
+    // The colorless pool is filled with ALL colorless cards by default. This will determine whether a colorless card is allowed when playing as this character
+    // In this example, we filter out any colorless cards exclusive to other Fabricate characters
+    @Override
+    public boolean containsColorless(AbstractCard card)
+    {
+        if (card instanceof PCLCard) {
+            return ((PCLCard) card).cardData.resources == PGR.core || ((PCLCard) card).cardData.resources == this;
+        }
+        return true;
+    }
+
+    // The colorless pool is filled with ALL colorless cards by default. This will determine whether a colorless card is allowed when NOT playing as this character
+    @Override
+    public boolean filterColorless(AbstractCard card)
+    {
+        return card instanceof PCLCard && ((PCLCard) card).cardData.resources == this;
+    }
+
+    @Override
+    public PCLCardData getAscendersBane()
+    {
+        return Curse_AscendersBane.DATA;
+    }
+
+    @Override
+    public ThePlayerData getData()
+    {
+        return new ThePlayerData(this);
+    }
+
+    @Override
+    public TheStrings getStrings()
+    {
+        return new TheStrings(this);
+    }
+
+    @Override
+    public TheTooltips getTooltips()
+    {
+        return new TheTooltips();
     }
 
     @Override
@@ -34,45 +79,9 @@ public class TheResources extends PCLResources<ThePlayerData, TheImages, TheTool
     }
 
     @Override
-    public ThePlayerData getData()
-    {
-        return new ThePlayerData(this);
-    }
-
-    @Override
-    public TheTooltips getTooltips()
-    {
-        return new TheTooltips();
-    }
-
-    @Override
-    public TheStrings getStrings()
-    {
-        return new TheStrings(this);
-    }
-
-    @Override
     protected void postInitialize()
     {
         super.postInitialize();
-    }
-
-    @Override
-    public boolean containsColorless(AbstractCard card)
-    {
-        return card instanceof PCLCard;
-    }
-
-    @Override
-    public boolean filterColorless(AbstractCard card)
-    {
-        return card instanceof PCLCard && ((PCLCard) card).cardData.resources == this;
-    }
-
-    @Override
-    public PCLCardData getAscendersBane()
-    {
-        return Curse_AscendersBane.DATA;
     }
 
 }
