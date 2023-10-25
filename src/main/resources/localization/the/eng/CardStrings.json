@@ -1,5 +1,5 @@
 {
 	"SAMPLE":	{
-		"the:ACard": {"EXTENDED_DESCRIPTION": ["You should not expect this card to do anything else."], "NAME": "A Card"}
+		"the:ACard": {"EXTENDED_DESCRIPTION": ["You should not expect this card to do anything else"], "NAME": "A Card"}
 	}
 }

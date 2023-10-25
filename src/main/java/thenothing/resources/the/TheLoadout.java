@@ -49,6 +49,10 @@ public class TheLoadout extends PCLLoadout
 
     @Override
     public ArrayList<String> getBaseStartingRelics() {
+        PCLLoadoutData data = getPreset();
+        if (data != null && data.relicSlots.size() > 0 && EUIUtils.any(data.relicSlots, r -> r.selected != null)) {
+            return EUIUtils.arrayList();
+        }
         return EUIUtils.arrayList(ARelic.DATA.ID);
     }
 

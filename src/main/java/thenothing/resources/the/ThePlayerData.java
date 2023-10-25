@@ -3,7 +3,9 @@ package thenothing.resources.the;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.relics.*;
 import extendedui.EUIUtils;
+import pinacolada.blights.PCLCustomBlightSlot;
 import pinacolada.cards.base.PCLCustomCardSlot;
+import pinacolada.potions.PCLCustomPotionSlot;
 import pinacolada.relics.PCLCustomRelicSlot;
 import pinacolada.resources.*;
 import pinacolada.resources.loadout.PCLLoadout;
@@ -23,10 +25,24 @@ public class ThePlayerData extends PCLPlayerData<TheResources, TheConfig, TheCha
     }
 
     @Override
+    public String[] getAdditionalBlightIDs(boolean customEnabled) {
+        return !customEnabled ? EUIUtils.arrayMap(PCLCustomBlightSlot.getBlights(resources.cardColor, AbstractCard.CardColor.COLORLESS),
+                String.class, slot -> slot.ID
+        ) : super.getAdditionalBlightIDs(customEnabled);
+    }
+
+    @Override
     public String[] getAdditionalCardIDs(boolean customEnabled) {
         return !customEnabled ? EUIUtils.arrayMap(PCLCustomCardSlot.getCards(resources.cardColor, AbstractCard.CardColor.COLORLESS),
                 String.class, slot -> slot.ID
         ) : super.getAdditionalCardIDs(customEnabled);
+    }
+
+    @Override
+    public String[] getAdditionalPotionIDs(boolean customEnabled) {
+        return !customEnabled ? EUIUtils.arrayMap(PCLCustomPotionSlot.getPotions(resources.cardColor, AbstractCard.CardColor.COLORLESS),
+                String.class, slot -> slot.ID
+        ) : super.getAdditionalPotionIDs(customEnabled);
     }
 
     @Override
