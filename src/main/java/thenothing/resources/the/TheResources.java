@@ -4,6 +4,7 @@ import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import extendedui.EUI;
 import extendedui.EUIUtils;
 import pinacolada.cards.base.PCLCard;
 import pinacolada.cards.base.PCLCardData;
@@ -14,6 +15,7 @@ import pinacolada.dungeon.CombatManager;
 import pinacolada.resources.PCLResources;
 import pinacolada.resources.PGR;
 import pinacolada.resources.loadout.PCLLoadout;
+import pinacolada.utilities.GameUtilities;
 import thenothing.characters.TheCharacter;
 
 public class TheResources extends PCLResources<ThePlayerData, TheImages, TheTooltips, TheStrings>
@@ -81,6 +83,7 @@ public class TheResources extends PCLResources<ThePlayerData, TheImages, TheTool
     protected void postInitialize()
     {
         super.postInitialize();
+        EUI.addCardSetFilter(cardColor, GameUtilities::getLoadoutNameForCard);
     }
 
 }
