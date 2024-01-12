@@ -50,7 +50,7 @@ public class TheLoadout extends PCLLoadout
     @Override
     public ArrayList<String> getBaseStartingRelics() {
         PCLLoadoutData data = getPreset();
-        if (data != null && data.relicSlots.size() > 0 && EUIUtils.any(data.relicSlots, r -> r.selected != null)) {
+        if (data != null && !data.relicSlots.isEmpty() && EUIUtils.any(data.relicSlots, r -> r.selected != null)) {
             return EUIUtils.arrayList();
         }
         return EUIUtils.arrayList(ARelic.DATA.ID);
@@ -63,12 +63,12 @@ public class TheLoadout extends PCLLoadout
             data.addCardSlot(slots.get(0).ID, 5);
             data.addCardSlot(slots.get(1).ID, 5);
         }
-        else if (slots.size() > 0) {
+        else if (!slots.isEmpty()) {
             data.addCardSlot(slots.get(0).ID, 5);
         }
         else {
             ArrayList<String> cards = getAvailableCardIDs();
-            if (cards.size() > 0) {
+            if (!cards.isEmpty()) {
                 data.addCardSlot(cards.get(0), 5);
             }
             if (cards.size() > 1) {
@@ -80,7 +80,7 @@ public class TheLoadout extends PCLLoadout
     @Override
     protected void setDefaultRelicsForData(PCLLoadoutData data) {
         ArrayList<PCLCustomRelicSlot> slots = EUIUtils.filter(PCLCustomRelicSlot.getRelics(color), slot -> slot.getBuilder(0).tier == AbstractRelic.RelicTier.STARTER);
-        if (slots.size() > 0) {
+        if (!slots.isEmpty()) {
             data.addRelicSlot(slots.get(0).ID);
         }
     }

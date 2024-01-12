@@ -21,7 +21,37 @@ public class ThePlayerData extends PCLPlayerData<TheResources, TheConfig, TheCha
 
     public ThePlayerData(TheResources resources)
     {
-        super(resources, 75, 99, 5, 3, 0, true, false);
+        super(resources, 75, 99, 5, 3, 0, 0, 0);
+    }
+
+    @Override
+    public boolean canChangeSkin() {
+        return true;
+    }
+
+    @Override
+    public boolean canEditCore() {
+        return true;
+    }
+
+    @Override
+    public boolean canUseAugments() {
+        return true;
+    }
+
+    @Override
+    public boolean canUseCustom() {
+        return true;
+    }
+
+    @Override
+    public boolean canUseCustomColorless() {
+        return true;
+    }
+
+    @Override
+    public boolean canUseSummons() {
+        return true;
     }
 
     @Override
@@ -29,13 +59,6 @@ public class ThePlayerData extends PCLPlayerData<TheResources, TheConfig, TheCha
         return !customEnabled ? EUIUtils.arrayMap(PCLCustomBlightSlot.getBlights(resources.cardColor, AbstractCard.CardColor.COLORLESS),
                 String.class, slot -> slot.ID
         ) : super.getAdditionalBlightIDs(customEnabled);
-    }
-
-    @Override
-    public String[] getAdditionalCardIDs(boolean customEnabled) {
-        return !customEnabled ? EUIUtils.arrayMap(PCLCustomCardSlot.getCards(resources.cardColor, AbstractCard.CardColor.COLORLESS),
-                String.class, slot -> slot.ID
-        ) : super.getAdditionalCardIDs(customEnabled);
     }
 
     @Override
@@ -50,12 +73,6 @@ public class ThePlayerData extends PCLPlayerData<TheResources, TheConfig, TheCha
         return !customEnabled ? EUIUtils.arrayMap(PCLCustomRelicSlot.getRelics(resources.cardColor, AbstractCard.CardColor.COLORLESS),
                 String.class, slot -> slot.ID
         ) : super.getAdditionalRelicIDs(customEnabled);
-    }
-
-    @Override
-    public List<PCLLoadout> getAvailableLoadouts()
-    {
-        return Collections.emptyList();
     }
 
     @Override

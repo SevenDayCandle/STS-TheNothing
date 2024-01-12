@@ -37,9 +37,6 @@ public class TheCharacter extends PCLCharacter {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        if (ThePlayerData.core.strikes.size() > 0) {
-            return GameUtilities.getRandomElement(ThePlayerData.core.strikes).create();
-        }
         for (PCLCustomCardSlot slot : PCLCustomCardSlot.getCards(getCardColor())) {
             if (slot.getBuilder(0).cardRarity == AbstractCard.CardRarity.BASIC) {
                 return slot.make();

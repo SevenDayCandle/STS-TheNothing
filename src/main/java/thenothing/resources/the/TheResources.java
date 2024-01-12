@@ -29,8 +29,7 @@ public class TheResources extends PCLResources<ThePlayerData, TheImages, TheTool
     // The colorless pool is filled with ALL colorless cards by default. This will determine whether a colorless card is allowed when playing as this character
     // In this example, we filter out any colorless cards exclusive to other Fabricate characters
     @Override
-    public boolean containsColorless(AbstractCard card)
-    {
+    public boolean containsColorless(AbstractCard card) {
         if (card instanceof PCLCard) {
             return ((PCLCard) card).cardData.resources == PGR.core || ((PCLCard) card).cardData.resources == this;
         }
